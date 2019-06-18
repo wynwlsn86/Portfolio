@@ -9,7 +9,7 @@ const nodemailer = require("nodemailer");
 require('dotenv').config( ) 
 const { REACT_APP_EMAIL, REACT_APP_PASSWORD } = process.env
 
-const PORT = process.env.PORT || 3030 
+const PORT = process.env.PORT || 3030;
 
 
 app.use(logger('dev'))
@@ -78,4 +78,4 @@ app.post('/mail', async(req,res) => {
 //   sendReminder(data)
 // })
 
-app.listen(PORT () => console.log(`listening on port ${PORT}`))
+app.listen(PORT, () => console.log(`listening on port ${PORT}`))
