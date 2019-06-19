@@ -22,6 +22,7 @@ class App extends Component {
       text: '',
       sent: false,
       modal: false,
+      alert: false
     };
   }
 
@@ -33,23 +34,28 @@ class App extends Component {
 
   handleFormSubmit = async e => {
     e.preventDefault();
-    let data = {
-      from: this.state.from,
-      first_name: this.state.first_name,
-      text: this.state.text,
-      last_name: this.state.last_name,
-    };
-    axios
-      .post('https://waynewilsonportfolio.herokuapp.com/mail', data)
-      .then(res => {
-        console.log(data);
-        this.setState({sent: true});
-        console.log('sent');
-      })
-      .catch(e => {
-        console.log(e.message);
-      });
-      this.setState({modal: true})
+    if(!this.state.first_name || !this.state.last_name || !this.state.from || !this.state.text){
+      this.setState({alert: true})
+    }
+    else{
+      let data = {
+        from: this.state.from,
+        first_name: this.state.first_name,
+        text: this.state.text,
+        last_name: this.state.last_name,
+      };
+      axios
+        .post('https://waynewilsonportfolio.herokuapp.com/mail', data)
+        .then(res => {
+          console.log(data);
+          this.setState({sent: true});
+          console.log('sent');
+        })
+        .catch(e => {
+          console.log(e.message);
+        });
+        this.setState({modal: true})
+    }
   };
 
 
@@ -60,7 +66,15 @@ class App extends Component {
       from: '',
       text: '',
       sent: false,
-      modal: false
+      modal: false,
+      alert: false
+    })
+    this.clearForm();
+  }
+
+  closeAlertModal = () => {
+    this.setState({
+      alert: false
     })
     this.clearForm();
   }
@@ -112,7 +126,7 @@ class App extends Component {
             >
               Contact
             </Link>
-            <a href="http://www.devwilson.com/" className="header-link">
+            <a href="https://www.docdroid.net/EcT5dX9/wayne-wilson.pdf" className="header-link">
               Resume
             </a>
             {/* <h3 className='header-h3'>About</h3>
@@ -139,8 +153,11 @@ class App extends Component {
           <h1>Projects</h1>
           <article className="projects-article">
             <div className="project-card">
-              <a href="http://anything-i-want.surge.sh/">
-                <img src={nomekop} alt="Nomekop" />
+              <a href="http://anything-i-want.surge.sh/" className='project-title'>
+                <img 
+                  src={nomekop} 
+                  alt="Nomekop" 
+                  className='project-image'/>
                 <h3>Nomekop (V1)</h3>
               </a>
               <p>
@@ -151,8 +168,11 @@ class App extends Component {
               </p>
             </div>
             <div className="project-card">
-              <a href="http://newbie-royale.herokuapp.com/">
-                <img src={newbieroyale} alt="Newbie Royale" />
+              <a href="http://newbie-royale.herokuapp.com/" className='project-title'>
+                <img 
+                  src={newbieroyale} 
+                  alt="Newbie Royale" 
+                  className='project-image'/>
                 <h3>Newbie Royal (V2)</h3>
               </a>
               <p>
@@ -163,8 +183,11 @@ class App extends Component {
               </p>
             </div>
             <div className="project-card">
-              <a href="http://pawsome.surge.sh/">
-                <img src={pawesome} alt="Pawesome Pet Rescue" />
+              <a href="http://pawsome.surge.sh/" className='project-title'>
+                <img 
+                  src={pawesome} 
+                  alt="Pawesome Pet Rescue" 
+                  className='project-image'/>
                 <h3>Pawesome (V1)</h3>
               </a>
               <p>
@@ -177,8 +200,11 @@ class App extends Component {
               </p>
             </div>
             <div className="project-card">
-              <a href="https://footballfrenzy.herokuapp.com/">
-                <img src={footballfrenzy} alt="Football Frenzy" />
+              <a href="https://footballfrenzy.herokuapp.com/" className='project-title'>
+                <img 
+                  src={footballfrenzy} 
+                  alt="Football Frenzy" 
+                  className='project-image'/>
                 <h3>Football Frenzy (V1)</h3>
               </a>
               <p>
@@ -197,7 +223,6 @@ class App extends Component {
           {/* Modal */}
           <div 
             id="myModal" 
-            class="modal"
             className={this.state.modal ? 'active-modal': 'modal'} 
             onClick={this.closeModal}>
             <div className="modal-content">
@@ -208,6 +233,19 @@ class App extends Component {
             </div>
           </div>
           {/* Modal End */}
+          {/* Alert Modal */}
+          <div 
+            id="alertModal" 
+            className={this.state.alert ? 'alert-active-modal': 'modal'} 
+            onClick={this.closeModal}>
+            <div className="alert-modal-content">
+              <span 
+                className="alert-close"
+                onClick={this.closeAlertModal}>&times;</span>
+              <p className={'modal-text'}>Please fill in all fields to contact me</p>
+            </div>
+          </div>
+          {/* End Alert Modal */}
           <h1>Contact me:</h1>
           <div className="contact-form-container">
             <div className="contact-container">
