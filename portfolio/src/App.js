@@ -153,34 +153,39 @@ class App extends Component {
           <h1>Projects</h1>
           <article className="projects-article">
             <div className="project-card">
+            <div className="project-hover">
               <a href="http://anything-i-want.surge.sh/" className='project-title'>
+                <h3>Nomekop (V1)</h3>            
+                  <p>
+                    An RPG turn based combat game, demonstrating knowledge of HTML,
+                    CSS, and Javascript. V2 is planned to leverage React's component
+                    based structure. Future verisons will implement an item, and
+                    healing system.
+                  </p>
+                </a>
+              </div>
+              
                 <img 
                   src={nomekop} 
                   alt="Nomekop" 
                   className='project-image'/>
-                <h3>Nomekop (V1)</h3>
-              </a>
-              <p>
-                An RPG turn based combat game, demonstrating knowledge of HTML,
-                CSS, and Javascript. V2 is planned to leverage React's component
-                based structure. Future verisons will implement an item, and
-                healing system.
-              </p>
             </div>
             <div className="project-card">
-              <a href="http://newbie-royale.herokuapp.com/" className='project-title'>
+              <div className="project-hover">
+                <a href="http://newbie-royale.herokuapp.com/" className='project-title'>
+                  <h3>Newbie Royal (V2)</h3>
+                  <p>
+                    A deck construction tool for SuperCell's Clash Royale. This
+                    application makes calls to Clash Royale's API, and renders all
+                    information through React. Users can explore inormation on
+                    cards, chests, and leagues; as well as create decks.
+                  </p>
+                </a>
+              </div> 
                 <img 
                   src={newbieroyale} 
                   alt="Newbie Royale" 
                   className='project-image'/>
-                <h3>Newbie Royal (V2)</h3>
-              </a>
-              <p>
-                A deck construction tool for SuperCell's Clash Royale. This
-                application makes calls to Clash Royale's API, and renders all
-                information through React. Users can explore inormation on
-                cards, chests, and leagues; as well as create decks.
-              </p>
             </div>
             <div className="project-card">
               <a href="http://pawsome.surge.sh/" className='project-title'>
@@ -188,16 +193,16 @@ class App extends Component {
                   src={pawesome} 
                   alt="Pawesome Pet Rescue" 
                   className='project-image'/>
-                <h3>Pawesome (V1)</h3>
+                {/* <h3>Pawesome (V1)</h3> */}
               </a>
-              <p>
+              {/* <p>
                 Pawesome is a 501c3 animal rescue that I am a part of. Their
                 main need was to leverage a database in order to store and
                 organize information on pets, adoptions, and volunteers. This
                 application uses Express to build a custom databse and API, to
                 allow the stakeholder the ability to preform full CRUD
                 funcationality across all tables.
-              </p>
+              </p> */}
             </div>
             <div className="project-card">
               <a href="https://footballfrenzy.herokuapp.com/" className='project-title'>
@@ -205,9 +210,9 @@ class App extends Component {
                   src={footballfrenzy} 
                   alt="Football Frenzy" 
                   className='project-image'/>
-                <h3>Football Frenzy (V1)</h3>
+                {/* <h3>Football Frenzy (V1)</h3> */}
               </a>
-              <p>
+              {/* <p>
                 Football Frenzy is fantasy football league manager for
                 commissioners. This tool in V1 gives the user the ability to add
                 teams to leagues, and manager the players across teams,
@@ -215,7 +220,7 @@ class App extends Component {
                 This application leaverages Ruby on Rails, to set up the
                 multiple end-points needed, in order to manipulate the
                 multi-relational database
-              </p>
+              </p> */}
             </div>
           </article>
         </div>
